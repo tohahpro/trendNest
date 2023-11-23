@@ -4,7 +4,6 @@ import { Outlet, useNavigation } from "react-router-dom";
 const MainLayout = () => {
 
     const navigation = useNavigation();
-
     const goToTop = () => window.scrollTo(0, 0)
 
     goToTop()
