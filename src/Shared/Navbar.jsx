@@ -19,12 +19,12 @@ const Navbar2 = () => {
     useEffect(() => {
         const changeColor = () => {
             if (window.scrollY >= 30) {
-                setColor('#FFFFFF')
-                setTextColor('#2C2F33')
-            }
-            else {
                 setColor('#2C2F33')
                 setTextColor('#FFFFFF')
+            }
+            else {
+                setColor('transparent')
+                setTextColor('#2C2F33')
             }
         }
         window.addEventListener('scroll', changeColor);
@@ -108,7 +108,10 @@ const Navbar2 = () => {
                                                     {user?.displayName}
                                                 </a>
                                             </li>
+                                            <li>
 
+                                                <Link to='/dashboard'>Dashboard</Link>
+                                            </li>
                                             <li>
                                                 <button className="py-2 px-3 hover:text-white" onClick={logout}>Logout</button>
                                             </li>

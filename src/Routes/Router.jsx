@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Layout/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />
     },
+    {
+        path: 'dashboard',
+        element: <Dashboard />
+    }
 ]);
 
 
