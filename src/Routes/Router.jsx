@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
+import AddItems from "../Pages/DashBoard/Host/AddItems";
 
 const router = createBrowserRouter([
     {
@@ -28,8 +29,14 @@ const router = createBrowserRouter([
         element: <Login />
     },
     {
-        path: 'dashboard',
-        element: <Dashboard />
+        path: '/dashboard',
+        element: <Dashboard />,
+        children: [
+            {
+                path: '/dashboard/add-item',
+                element: <AddItems />
+            }
+        ]
     }
 ]);
 

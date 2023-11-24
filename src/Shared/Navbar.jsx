@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
@@ -11,37 +11,18 @@ const Navbar2 = () => {
     const [open, setOpen] = useState(false)
     const { user, logout } = useContext(AuthContext)
 
-    const [color, setColor] = useState('transparent')
-    const [textColor, setTextColor] = useState('white')
 
-
-
-    useEffect(() => {
-        const changeColor = () => {
-            if (window.scrollY >= 30) {
-                setColor('#2C2F33')
-                setTextColor('#FFFFFF')
-            }
-            else {
-                setColor('transparent')
-                setTextColor('#2C2F33')
-            }
-        }
-        window.addEventListener('scroll', changeColor);
-    }, [])
 
     return (
         <div>
-            <nav style={{ backgroundColor: `${color}` }}
-                className="
-                        absolute left-0 right-0 z-[2]           
-                        lg:fixed items-center justify-between lg:top-0 lg:left-0 lg:w-full lg:z-[10] lg:ease-in lg:duration-300 lg:px-56 lg:pb-2 md:pt-6">
+            <nav className=" left-0 right-0 z-[2]           
+                        fixed items-center justify-between lg:top-0 lg:left-0 lg:w-full lg:z-[10]  lg:px-56 shadow-md bg-white py-1">
 
 
                 <div className="flex items-center justify-between">
                     <Link to='/'>
                         <div className="flex items-center gap-2">
-                            <h2 className="text-4xl font-bold text-blue-400">Logo</h2>
+                            <h2 className="text-xl lg:text-3xl font-bold text-[#2b2868]"><span className="text-[#96AE00]">Trend</span>Nest</h2>
                         </div>
                     </Link>
 
@@ -53,16 +34,15 @@ const Navbar2 = () => {
                     </div>
 
                     <div
-                        style={{ color: `${textColor}` }}
                         className={`
-                        absolute lg:flex flex-wrap mt-64 lg:m-0 w-full lg:w-fit p-6 lg:p-0 bg-black duration-4000 ${open ? ' ' : 'hidden'} lg:static lg:bg-transparent text-center text-white lg:text-black space-y-2 z-20`}
+                        absolute lg:flex flex-wrap mt-60 lg:m-0 w-full lg:w-fit p-6 lg:p-0 bg-white/90 border lg:border-none  duration-4000 ${open ? ' ' : 'hidden'} lg:static text-[#2b2868] lg:bg-transparent text-center  space-y-2 z-20`}
                     >
                         <ul className="lg:flex lg:gap-12 items-center  z-70 text-lg font-semibold">
                             <li>
                                 <NavLink
                                     to="/"
                                     className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-[#67B6F4] underline" : ""
+                                        isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
                                     }
                                 >
                                     Home
@@ -72,7 +52,7 @@ const Navbar2 = () => {
                                 <NavLink
                                     to="/addProduct"
                                     className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-[#67B6F4] underline" : ""
+                                        isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
                                     }
                                 >
                                     Add Product
