@@ -4,17 +4,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "./SocialLogin";
+
 
 
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
-
+    const axiosPublic = useAxiosPublic()
 
     const navigate = useNavigate();
     const location = useLocation();
     const { Login } = useContext(AuthContext)
+
 
     const handleLogin = e => {
         e.preventDefault()
@@ -27,10 +31,24 @@ const Login = () => {
 
         Login(email, password)
             .then(res => {
+                const userInfo = {
+                    email: res.user?.email,
+                    name: res.user?.displayName,
+                    role: 'user'
+                }
+                axiosPublic.post('/user-email', userInfo)
+                    .then(res => {
+
+                        console.log(res.data)
+                    })
+
                 if (res.user) {
                     toast.success('Login successful')
                     navigate(location?.state ? location.state : '/')
                 }
+
+
+
             })
             .catch(error => {
                 return toast.error(error.message)
@@ -79,7 +97,7 @@ const Login = () => {
                                     </Link>
 
                                     </label>
-
+                                    <SocialLogin />
                                 </div>
 
                             </form>

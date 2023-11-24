@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialRegister from "./SocialRegister";
 
 
 
@@ -16,7 +18,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const Register = () => {
 
-    console.log(import.meta.env.VITE_IMAGE_HOSTING_KEY);
+
     const { Register, Login, userUpdate } = useContext(AuthContext)
 
     const [showPassword, setShowPassword] = useState(false)
@@ -29,14 +31,14 @@ const Register = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-
+    const axiosPublic = useAxiosPublic()
 
 
     const { register, handleSubmit } = useForm()
 
     const onSubmit = async (data) => {
 
-        console.log(data);
+
 
         // image upload to imgbb and then get an url 
         const imageFile = { image: data.image[0] }
@@ -50,8 +52,6 @@ const Register = () => {
         console.log(res.data.data.display_url);
 
         if (res.data.success) {
-            // now send the menu item data to the server with the image url
-
             const name = data.name
             const email = data.email
             const password = data.password
@@ -59,16 +59,29 @@ const Register = () => {
 
             Register(email, password)
                 .then(res => {
+                    if (res.user) {
+                        toast.success('Register successful')
+                        navigate(location?.state ? location.state : '/')
+                    }
                     Login(() => {
 
                     })
                     userUpdate(name, photo)
                         .then(() => {
                         })
-                    if (res.user) {
-                        toast.success('Register successful')
-                        navigate(location?.state ? location.state : '/')
+
+                    const userInfo = {
+                        email: res.user?.email,
+                        name: res.user?.displayName,
+                        role: 'user'
                     }
+                    axiosPublic.post('/user-email', userInfo)
+                        .then(res => {
+
+                            console.log(res.data)
+                        })
+
+
                 })
 
                 .catch(error => {
@@ -167,7 +180,7 @@ const Register = () => {
                                     </Link>
 
                                     </p>
-
+                                    <SocialRegister />
                                 </div>
 
                             </form>

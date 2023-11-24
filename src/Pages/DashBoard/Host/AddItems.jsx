@@ -92,7 +92,7 @@ const AddItems = () => {
                             <label className="flex">Category</label>
 
                             <TagsInput
-
+                                required
                                 value={selected}
                                 onChange={setSelected}
                                 placeHolder="enter product category"
