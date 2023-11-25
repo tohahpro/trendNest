@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+
+
 import auth from "../Config/firebase.config";
-import axios from "axios";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 
@@ -15,7 +17,7 @@ const AuthProvider = ({ children }) => {
 
 
 
-
+    const axiosPublic = useAxiosPublic()
     const [user, setUser] = useState({})
     const [loading, setLoading] = useState(true)
 
@@ -72,32 +74,29 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            const userEmail = currentUser?.email || user?.email
             setUser(currentUser);
-            setLoading(false)
 
-            const loggedUser = { email: userEmail }
             if (currentUser) {
-                axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/jwt', userInfo)
                     .then(res => {
-                        console.log('Token response', res.data);
+                        // console.log(res.data.token);
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                            setLoading(false);
+                        }
                     })
-
             }
             else {
-                axios.post("http://localhost:5000/logout", loggedUser, { withCredentials: true })
-                    .then(res => {
-                        console.log("Clear token", res.data);
-                    })
+                localStorage.removeItem('access-token')
+                setLoading(false);
             }
-
-
         });
 
         return () => {
             return unSubscribe();
         };
-    }, [user?.email]);
+    }, [user, axiosPublic]);
 
 
 

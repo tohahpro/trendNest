@@ -19,7 +19,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Register = () => {
 
 
-    const { Register, Login, userUpdate } = useContext(AuthContext)
+    const { Register, userUpdate } = useContext(AuthContext)
 
     const [showPassword, setShowPassword] = useState(false)
     const [disabled, setDisabled] = useState(true)
@@ -57,30 +57,31 @@ const Register = () => {
             const password = data.password
             const photo = res.data.data.display_url
 
+            console.log(name);
+
             Register(email, password)
                 .then(res => {
-                    if (res.user) {
-                        toast.success('Register successful')
-                        navigate(location?.state ? location.state : '/')
-                    }
-                    Login(() => {
-
-                    })
                     userUpdate(name, photo)
                         .then(() => {
                         })
 
+
+
                     const userInfo = {
                         email: res.user?.email,
-                        name: res.user?.displayName,
+                        name: name,
                         role: 'user'
                     }
+
                     axiosPublic.post('/user-email', userInfo)
                         .then(res => {
 
                             console.log(res.data)
                         })
-
+                    if (res.user) {
+                        toast.success('Register successful')
+                        navigate(location?.state ? location.state : '/')
+                    }
 
                 })
 
@@ -101,6 +102,7 @@ const Register = () => {
         else {
             alert('Captcha Does Not Match');
             setDisabled(true)
+            return
         }
     }
 

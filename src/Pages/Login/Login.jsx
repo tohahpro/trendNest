@@ -10,6 +10,7 @@ import SocialLogin from "./SocialLogin";
 
 
 
+
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
@@ -31,6 +32,7 @@ const Login = () => {
 
         Login(email, password)
             .then(res => {
+
                 const userInfo = {
                     email: res.user?.email,
                     name: res.user?.displayName,

@@ -6,6 +6,9 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import AddItems from "../Pages/DashBoard/Host/AddItems";
+import AdminHome from "../Pages/DashBoard/Admin/AdminHome";
+import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers";
+import UserUpdate from "../Components/UserUpdate";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +38,23 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/add-item',
                 element: <AddItems />
-            }
+            },
+
+            // admin 
+            {
+                path: '/dashboard/admin-home',
+                element: <AdminHome />
+            },
+            {
+                path: '/dashboard/manage-users',
+                element: <ManageUsers />
+            },
+            {
+                path: '/dashboard/user-update/:id',
+                element: <UserUpdate />,
+                loader: ({ params }) => fetch(`http://localhost:5000/user-update/${params.id}`)
+            },
+
         ]
     }
 ]);
