@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { TagsInput } from "react-tag-input-component";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -20,6 +21,8 @@ const AddItems = () => {
 
     const { register, handleSubmit } = useForm()
     const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
+
 
     const onSubmit = async (data) => {
 
@@ -35,7 +38,7 @@ const AddItems = () => {
             const productItem = {
                 ownerName: user.displayName,
                 ownerPhoto: user.photoURL,
-                ownerEmail: user.email,
+                email: user.email,
                 name: data.name,
                 category: selected[0],
                 price: parseFloat(data.price),
@@ -54,6 +57,7 @@ const AddItems = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        navigate('/dashboard/my-products')
                     }
                 })
 

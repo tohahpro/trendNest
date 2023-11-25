@@ -96,14 +96,14 @@ const CheckOut = () => {
                 const res = await axios.post('http://localhost:5000/payments', payment)
                 console.log(res.data)
 
-                if (res.data?.paymentResult?.insertedId) {
+                if (res.data?.insertedId) {
                     Swal.fire({
                         title: `Thanks For Pay`,
                         icon: "success",
                         showConfirmButton: false,
                         timer: 2500
                     });
-                    navigate('/')
+                    navigate('/dashboard/my-profile')
                 }
 
             }

@@ -113,6 +113,16 @@ const Dashboard = () => {
                                 Add Products
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/dashboard/my-products"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                }
+                            >
+                                My Products
+                            </NavLink>
+                        </li>
 
                         <li><NavLink to='/'>Home</NavLink></li>
                         <div className="">

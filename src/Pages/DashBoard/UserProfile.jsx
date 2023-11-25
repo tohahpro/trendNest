@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const UserProfile = () => {
@@ -10,12 +11,27 @@ const UserProfile = () => {
     const { user } = useContext(AuthContext)
 
     const axiosPublic = useAxiosPublic()
+
+    const axiosSecure = useAxiosSecure()
+
     const [role, setRole] = useState('')
+
+    const [member, setMember] = useState({})
+
 
     axiosPublic.get(`/user/${user?.email}`)
         .then(res => {
             setRole(res.data.role)
         })
+
+
+    axiosSecure.get(`/payments/${user?.email}`)
+        .then(res => {
+            setMember(res.data)
+        })
+
+    // console.log(member)
+
 
     return (
         <div className="min-h-screen flex justify-center items-center">
@@ -37,10 +53,17 @@ const UserProfile = () => {
 
                 <div className="p-10">
                     <h3 className="text-center">Membership</h3>
-                    <div className="flex justify-center">
-                        <Link to='/dashboard/user-payment'>
-                            <button className="btn px-8 bg-red-500 text-white mt-8">Subscribe</button>
-                        </Link>
+                    <div className="flex justify-center mt-4">
+
+                        {
+                            member.status ?
+                                <><p className="px-5 py-2 bg-green-500 rounded-lg text-white font-medium">{member.status}</p></>
+                                :
+                                <Link to='/dashboard/user-payment'>
+                                    <button className="btn px-8 bg-red-500 text-white mt-8">Subscribe</button>
+                                </Link>
+                        }
+
 
                     </div>
                 </div>

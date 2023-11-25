@@ -11,6 +11,7 @@ import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers";
 import UserUpdate from "../Components/UserUpdate";
 import UserProfile from "../Pages/DashBoard/UserProfile";
 import Payment from "../Pages/DashBoard/User/Payment";
+import MyProducts from "../Pages/DashBoard/User/MyProducts";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/user-payment',
                 element: <Payment />
+            },
+            {
+                path: '/dashboard/my-products',
+                element: <MyProducts />
             },
         ]
     }
