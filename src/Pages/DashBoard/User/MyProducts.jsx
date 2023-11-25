@@ -95,7 +95,7 @@ const MyProducts = () => {
                                     {item.price} $
                                 </div>
                                 <div>
-                                    <Link to={`/booking-update/${item._id}`} className="btn px-5  text-white bg-green-400"><BsPencilFill></BsPencilFill></Link>
+                                    <Link to={`/dashboard/product-update/${item._id}`} className="btn px-5  text-white bg-green-400"><BsPencilFill></BsPencilFill></Link>
 
                                     <button onClick={() => handleDelete(item._id)} className="btn px-5  text-white bg-[#FF3811]"><MdDelete></MdDelete></button>
                                 </div>
