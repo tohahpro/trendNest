@@ -117,7 +117,7 @@ const Dashboard = () => {
                         <li><NavLink to='/'>Home</NavLink></li>
                         <div className="">
                             <li>
-                                <NavLink to='/dashboard/profile'>Profile</NavLink>
+                                <NavLink to='/dashboard/my-profile'>My Profile</NavLink>
                             </li>
 
                         </div>

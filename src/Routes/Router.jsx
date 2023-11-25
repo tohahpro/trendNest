@@ -9,6 +9,8 @@ import AddItems from "../Pages/DashBoard/Host/AddItems";
 import AdminHome from "../Pages/DashBoard/Admin/AdminHome";
 import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers";
 import UserUpdate from "../Components/UserUpdate";
+import UserProfile from "../Pages/DashBoard/UserProfile";
+import Payment from "../Pages/DashBoard/User/Payment";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +57,16 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/user-update/${params.id}`)
             },
 
+            // public 
+
+            {
+                path: '/dashboard/my-profile',
+                element: <UserProfile />
+            },
+            {
+                path: '/dashboard/user-payment',
+                element: <Payment />
+            },
         ]
     }
 ]);
