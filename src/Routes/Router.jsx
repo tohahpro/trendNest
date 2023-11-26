@@ -15,6 +15,8 @@ import MyProducts from "../Pages/DashBoard/User/MyProducts";
 import ProductUpdate from "../Pages/DashBoard/User/ProductUpdate";
 import ProductMenage from "../Pages/DashBoard/Moderator/ProductMenage";
 import ProductStatusUpdate from "../Components/ProductStatusUpdate";
+import ProductDetails from "../Components/ProductDetails";
+import AllProduct from "../Pages/AllProduct";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +27,15 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/products',
+                element: <AllProduct />
+            },
+            {
+                path: '/product-details/:id',
+                element: <ProductDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/product-details/${params.id}`)
             }
         ],
 

@@ -72,7 +72,7 @@ const ProductMenage = () => {
                                     {item.name}
                                 </div>
                                 <div className="text-center w-20">
-                                    <Link className="btn">Details</Link>
+                                    <Link to={`/product-details/${item._id}`} className="btn">Details</Link>
                                 </div>
                                 {
                                     item?.role === 'featured' ?
