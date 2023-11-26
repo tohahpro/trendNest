@@ -13,6 +13,8 @@ import UserProfile from "../Pages/DashBoard/UserProfile";
 import Payment from "../Pages/DashBoard/User/Payment";
 import MyProducts from "../Pages/DashBoard/User/MyProducts";
 import ProductUpdate from "../Pages/DashBoard/User/ProductUpdate";
+import ProductMenage from "../Pages/DashBoard/Moderator/ProductMenage";
+import ProductStatusUpdate from "../Components/ProductStatusUpdate";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +79,17 @@ const router = createBrowserRouter([
                 path: '/dashboard/product-update/:id',
                 element: <ProductUpdate />,
                 loader: ({ params }) => fetch(`http://localhost:5000/product-update/${params.id}`)
+            },
+
+
+            {
+                path: '/dashboard/manage-products',
+                element: <ProductMenage />
+            },
+            {
+                path: '/dashboard/product-status-update/:id',
+                element: <ProductStatusUpdate />,
+                loader: ({ params }) => fetch(`http://localhost:5000/product-status/${params.id}`)
             },
         ]
     }

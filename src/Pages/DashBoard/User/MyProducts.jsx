@@ -64,10 +64,12 @@ const MyProducts = () => {
                         <label className="md:w-32">Image</label>
 
                     </div>
-                    <div className="text-center pr-24 w-80">
+                    <div className="text-center pr-24 w-60">
                         Name
                     </div>
-                    <div className="text-center pl-10 w-80">
+                    <div className="text-end pr-10 w-32">Status</div>
+                    <div className="text-center w-20">Vote</div>
+                    <div className="text-center  w-40">
                         Price
                     </div>
                     <div className="pr-10">
@@ -86,12 +88,13 @@ const MyProducts = () => {
                                         item.image && <img className="md:w-32 rounded-lg" src={item.image} alt="" />
                                     }
 
-                                    {/* <p className="pt-2 w-36">{item.name}</p> */}
                                 </div>
-                                <div className="text-start w-80">
+                                <div className="text-start pl-10 w-60">
                                     {item.name}
                                 </div>
-                                <div >
+                                <div className="text-center pl-8 w-20">{item.status}</div>
+                                <div className="text-center pl-16 w-20">10</div>
+                                <div className="text-center pl-16 w-40">
                                     {item.price} $
                                 </div>
                                 <div>

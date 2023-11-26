@@ -43,6 +43,7 @@ const AddItems = () => {
                 category: selected[0],
                 price: parseFloat(data.price),
                 recipe: data.recipe,
+                status: 'pending',
                 image: res.data.data.display_url
             }
             console.log(productItem);
