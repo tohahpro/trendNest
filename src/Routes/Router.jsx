@@ -17,6 +17,7 @@ import ProductMenage from "../Pages/DashBoard/Moderator/ProductMenage";
 import ProductStatusUpdate from "../Components/ProductStatusUpdate";
 import ProductDetails from "../Components/ProductDetails";
 import AllProduct from "../Pages/AllProduct";
+import ReportMenage from "../Pages/DashBoard/Moderator/ReportMenage";
 
 const router = createBrowserRouter([
     {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/product-status-update/:id',
                 element: <ProductStatusUpdate />,
                 loader: ({ params }) => fetch(`http://localhost:5000/product-status/${params.id}`)
+            },
+            {
+                path: '/dashboard/manage-report',
+                element: <ReportMenage />
             },
         ]
     }

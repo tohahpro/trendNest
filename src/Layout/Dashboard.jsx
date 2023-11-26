@@ -89,7 +89,7 @@ const Dashboard = () => {
 
                                     <li>
                                         <NavLink
-                                            to="/dashboard/manage-users"
+                                            to="/dashboard/manage-report"
                                             className={({ isActive, isPending }) =>
                                                 isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
                                             }
