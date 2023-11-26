@@ -10,9 +10,6 @@ import 'swiper/css/autoplay';
 
 const ReviewSlider = ({ review }) => {
 
-
-    console.log(review);
-
     return (
         <div>
 
@@ -37,7 +34,7 @@ const ReviewSlider = ({ review }) => {
 
                                     {
                                         review.map((item, idx) =>
-                                            <div key={idx}>
+                                            <div key={idx + 1}>
                                                 <SwiperSlide>
                                                     <div className='p-10 h-full bg-gray-200 shadow-xl'>
                                                         <div className='flex justify-center'>

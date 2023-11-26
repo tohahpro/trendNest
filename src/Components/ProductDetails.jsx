@@ -15,9 +15,9 @@ const ProductDetails = () => {
     const axiosPublic = useAxiosPublic()
 
 
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
 
-
+    // for get review 
     const { refetch, data: review = []
     } = useQuery({
         queryKey: ["product-review", user?.email],
@@ -28,6 +28,36 @@ const ProductDetails = () => {
         }
     })
 
+    // for get vote 
+
+    const { data: vote = [] } = useQuery({
+        queryKey: ["product-vote", user?.email],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/product-vote/${productLoad._id}`)
+            return res.data;
+        }
+    })
+
+
+    const totalVote = vote.reduce((previous, current) => previous + current.vote, 0)
+
+    const voteEmailFind = vote.find(item => item.email === user.email)
+
+    // for get report 
+
+    const { data: report = [] } = useQuery({
+        queryKey: ["product-report"],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/product-report/${productLoad._id}`)
+            return res.data;
+        }
+    })
+
+    console.log(report);
+
+    const reportEmailFind = report.find(item => item.email === user.email)
 
 
     const handleReview = (e) => {
@@ -62,6 +92,59 @@ const ProductDetails = () => {
     }
 
 
+
+    // upVote 
+
+    const handleVote = () => {
+        const vote = {
+            productId: productLoad._id,
+            email: user.email,
+            vote: 1,
+
+        }
+        axiosPublic.post('/product-vote', vote)
+            .then(res => {
+                console.log(res.data.insertedId);
+                if (res.data.insertedId) {
+                    refetch()
+                    Swal.fire({
+                        title: 'Thanks For Your Vote please reload page for update',
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+
+                }
+            })
+    }
+
+
+    const handleReport = () => {
+
+        const report = {
+            productName: productLoad.name,
+            productId: productLoad._id,
+            email: user.email,
+            report: 1,
+
+        }
+        axiosPublic.post('/product-report', report)
+            .then(res => {
+                console.log(res.data.insertedId);
+                if (res.data.insertedId) {
+                    refetch()
+                    Swal.fire({
+                        title: 'Your report add please reload page for update',
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+
+                }
+            })
+    }
+
+
     return (
         <div className="mt-24 mx-96">
             <div>
@@ -72,12 +155,27 @@ const ProductDetails = () => {
                         <p className="rounded-lg font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{productLoad.category}</p>
                         <p>{productLoad.recipe}</p>
                         <div>
-                            <p>Vote: 0</p>
-                            <p>Report: 0</p>
+                            <p>Vote: {totalVote}</p>
+                            <p>Report: {report.length}</p>
                         </div>
                         <div className="card-actions">
-                            <button className="btn px-4"><MdHowToVote></MdHowToVote> UpVote</button>
-                            <button className="btn px-4"><GoReport /> Report</button>
+                            {
+                                voteEmailFind ?
+
+                                    <button disabled className="btn px-4"><MdHowToVote></MdHowToVote> UpVote</button>
+
+                                    :
+                                    <button onClick={handleVote} className="btn px-4"><MdHowToVote></MdHowToVote> UpVote</button>
+                            }
+
+
+                            {
+                                reportEmailFind ? <button disabled className="btn px-4"><GoReport /> Report</button>
+                                    :
+                                    <button onClick={handleReport} className="btn px-4"><GoReport /> Report</button>
+                            }
+
+
                         </div>
                     </div>
                 </div>
