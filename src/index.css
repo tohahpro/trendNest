@@ -9,3 +9,28 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+
+
+.home-banner {
+  background-image: url('https://i.ibb.co/kmNxP8L/backgroud-for-banner.jpg');
+}
+
+
+.pagination {
+  text-align: center;
+  margin: 12px;
+}
+
+.pagination button {
+  margin: 12px;
+  border: 1px solid blue;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 7px;
+}
+
+
+.pagination .selected {
+  background-color: #FF9900;
+}

@@ -14,8 +14,9 @@ const ProductDetails = () => {
     const productLoad = useLoaderData()
     const axiosPublic = useAxiosPublic()
 
-
     const { user, loading } = useContext(AuthContext)
+
+
 
     // for get review 
     const { refetch, data: review = []
@@ -34,7 +35,7 @@ const ProductDetails = () => {
         queryKey: ["product-vote", user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosPublic.get(`/product-vote/${productLoad._id}`)
+            const res = await axiosPublic.get(`/product-vote/${productLoad?._id}`)
             return res.data;
         }
     })
@@ -42,7 +43,10 @@ const ProductDetails = () => {
 
     const totalVote = vote.reduce((previous, current) => previous + current.vote, 0)
 
-    const voteEmailFind = vote.find(item => item.email === user.email)
+    const voteEmailFind = vote.find(item => item?.email === user?.email)
+
+    const ownerEmail = productLoad?.email === user?.email
+
 
     // for get report 
 
@@ -50,14 +54,14 @@ const ProductDetails = () => {
         queryKey: ["product-report"],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosPublic.get(`/product-report/${productLoad._id}`)
+            const res = await axiosPublic.get(`/product-report/${productLoad?._id}`)
             return res.data;
         }
     })
 
-    console.log(report);
 
-    const reportEmailFind = report.find(item => item.email === user.email)
+
+    const reportEmailFind = report.find(item => item.email === user?.email)
 
 
     const handleReview = (e) => {
@@ -151,16 +155,16 @@ const ProductDetails = () => {
                 <div className="card lg:card-side bg-base-100 shadow-xl">
                     <figure className="flex-1"><img className="w-96" src={productLoad.image} alt="Album" /></figure>
                     <div className="card-body flex-1">
-                        <h2 className="card-title">{productLoad.name}</h2>
-                        <p className="rounded-lg font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{productLoad.category}</p>
+                        <h2 className="card-title">{productLoad?.name}</h2>
+                        <p className="rounded-lg font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{productLoad?.category}</p>
                         <p>{productLoad.recipe}</p>
                         <div>
                             <p>Vote: {totalVote}</p>
-                            <p>Report: {report.length}</p>
+                            <p>Report: {report?.length}</p>
                         </div>
                         <div className="card-actions">
                             {
-                                voteEmailFind ?
+                                voteEmailFind || ownerEmail ?
 
                                     <button disabled className="btn px-4"><MdHowToVote></MdHowToVote> UpVote</button>
 
@@ -170,7 +174,7 @@ const ProductDetails = () => {
 
 
                             {
-                                reportEmailFind ? <button disabled className="btn px-4"><GoReport /> Report</button>
+                                reportEmailFind || ownerEmail ? <button disabled className="btn px-4"><GoReport /> Report</button>
                                     :
                                     <button onClick={handleReport} className="btn px-4"><GoReport /> Report</button>
                             }
@@ -191,8 +195,8 @@ const ProductDetails = () => {
                 <h2 className="text-center text-2xl font-semibold">Review </h2>
                 <div className="px-16 py-5 flex w-full">
                     <div>
-                        <img className="w-32 rounded-lg" src={user.photoURL} alt="" />
-                        <h3 className="py-4 text-base font-medium">{user.displayName}</h3>
+                        <img className="w-32 rounded-lg" src={user?.photoURL} alt="" />
+                        <h3 className="py-4 text-base font-medium">{user?.displayName}</h3>
                     </div>
                     <div className="flex-1 pl-10">
                         <form onSubmit={handleReview}>

@@ -3,7 +3,7 @@ import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import logo from './../../public/Logo.png'
 
 
 const Navbar2 = () => {
@@ -22,7 +22,8 @@ const Navbar2 = () => {
                 <div className="flex items-center justify-between">
                     <Link to='/'>
                         <div className="flex items-center gap-2">
-                            <h2 className="text-xl lg:text-3xl font-bold text-[#2b2868]"><span className="text-[#96AE00]">Trend</span>Nest</h2>
+                            <h2 className="text-lg lg:text-2xl font-bold text-[#2b2868] flex items-center"><img className="w-10 mr-2" src={logo} alt="" /><span className="text-[#96AE00]">
+                                Trend</span>Nest</h2>
                         </div>
                     </Link>
 
@@ -50,12 +51,12 @@ const Navbar2 = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/addProduct"
+                                    to="/products"
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
                                     }
                                 >
-                                    Add Product
+                                    Products
                                 </NavLink>
                             </li>
 
