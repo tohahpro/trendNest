@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { AiFillHome } from "react-icons/ai";
+import { FaAddressCard } from "react-icons/fa6";
+import { MdManageAccounts } from "react-icons/md";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 
 const Dashboard = () => {
@@ -43,26 +47,34 @@ const Dashboard = () => {
                         {
                             role === 'admin' ?
                                 <>
-                                    <li>
-                                        <NavLink
-                                            to="/dashboard/admin-home"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
-                                            }
-                                        >
-                                            Admin Home
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            to="/dashboard/manage-users"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
-                                            }
-                                        >
-                                            Manage Users
-                                        </NavLink>
-                                    </li>
+                                    <div className="flex items-center gap-1">
+                                        <MdAdminPanelSettings />
+                                        <li>
+                                            <NavLink
+                                                to="/dashboard/admin-home"
+                                                className={({ isActive, isPending }) =>
+                                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                                }
+                                            >
+                                                Admin Home
+                                            </NavLink>
+                                        </li>
+                                    </div>
+
+                                    <div className="flex items-center gap-1">
+                                        <MdManageAccounts className="text-2xl" />
+                                        <li>
+                                            <NavLink
+                                                to="/dashboard/manage-users"
+                                                className={({ isActive, isPending }) =>
+                                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                                }
+                                            >
+                                                Manage Users
+                                            </NavLink>
+                                        </li>
+                                    </div>
+
                                 </>
                                 :
 
@@ -104,32 +116,55 @@ const Dashboard = () => {
                         }
 
 
-                        <li>
-                            <NavLink
-                                to="/dashboard/add-item"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
-                                }
-                            >
-                                Add Products
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/my-products"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
-                                }
-                            >
-                                My Products
-                            </NavLink>
-                        </li>
+                        {
+                            role === 'admin' || role === 'moderator' ? ""
 
-                        <li><NavLink to='/'>Home</NavLink></li>
+                                :
+
+                                <>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/add-item"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                            }
+                                        >
+                                            Add Products
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/my-products"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                            }
+                                        >
+                                            My Products
+                                        </NavLink>
+                                    </li>
+                                </>
+                        }
+
+                        <div className="flex items-center gap-1">
+                            <AiFillHome />
+                            <li><NavLink to='/'>Home</NavLink></li>
+                        </div>
+
                         <div className="">
-                            <li>
-                                <NavLink to='/dashboard/my-profile'>My Profile</NavLink>
-                            </li>
+                            <div className="flex items-center gap-1">
+                                <FaAddressCard />
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/my-profile"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                        }
+                                    >
+                                        My Profile
+                                    </NavLink>
+                                </li>
+                            </div>
+
 
                         </div>
                     </ul>
