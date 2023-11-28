@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import logo from './../../public/Logo.png'
@@ -60,12 +59,6 @@ const Navbar2 = () => {
                                 </NavLink>
                             </li>
 
-                            <li className="flex justify-center mt-2 lg:mt-0 ">
-                                <Link to='/dashboard/my-cart' className="relative">
-                                    <span className="absolute -top-2 ml-1 bg-green-400 px-2 text-sm rounded-full text-center font-semibold">0</span>
-                                    <AiOutlineShoppingCart className="text-2xl font-medium"></AiOutlineShoppingCart>
-                                </Link>
-                            </li>
 
                         </ul>
 

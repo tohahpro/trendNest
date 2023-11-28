@@ -44,15 +44,15 @@ const Home = () => {
 
 
             <section className="lg:mx-56 py-20">
-                <div className="grid grid-cols-4 gap-10">
+                <div className="grid grid-cols-3 gap-10">
                     {
-                        products.slice(0, 4).map((item, idx) =>
+                        products.slice(0, 6).map((item, idx) =>
                             item.status === 'accept' ?
 
 
                                 <div key={idx}>
                                     <div className="card card-compact bg-base-100 shadow-xl">
-                                        <figure><img src={item.image} alt="Shoes" /></figure>
+                                        <figure><img className="h-44" src={item.image} alt="Shoes" /></figure>
                                         <div className="card-body">
                                             <div className="space-y-3">
                                                 <p className="rounded-md font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{item.category}</p>
