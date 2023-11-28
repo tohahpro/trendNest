@@ -8,21 +8,21 @@ const UserUpdate = () => {
     const data = useLoaderData()
     const navigate = useNavigate()
 
-    console.log(data);
+
 
     const axiosSecure = useAxiosSecure()
     const handleUpdateRole = (e) => {
 
         e.preventDefault()
         const role = e.target.userRole.value;
-        console.log(role);
+
 
         axiosSecure.put(`/user-update/${data._id}`, { role })
             .then(res => {
-                console.log(res.data.modifiedCount);
+
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
-                        title: `user Role has been delete`,
+                        title: `User Role has been Updated`,
                         icon: "success",
                         showConfirmButton: false,
                         timer: 2500

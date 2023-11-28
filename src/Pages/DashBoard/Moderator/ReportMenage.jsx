@@ -1,21 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { MdDelete } from 'react-icons/md';
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const ReportMenage = () => {
 
-    const axiosPublic = useAxiosPublic()
+
     const axiosSecure = useAxiosSecure()
+
+    const { user } = useContext(AuthContext)
 
     const { refetch, data: report = [] } = useQuery({
         queryKey: ["products"],
 
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products`)
+            const res = await axiosSecure.get(`/products?email=${user?.email}`)
             return res.data;
         }
     })
@@ -74,7 +78,7 @@ const ReportMenage = () => {
                 </div>
                 <hr className="border border-black hidden md:flex" />
                 {
-                    report.map((item, idx) =>
+                    report.slice(3, 6).map((item, idx) =>
                         <div key={item._id}>
                             <div className="grid md:flex items-center justify-between my-5 space-y-3 p-4 md:p-0 border md:border-none rounded-lg">
 

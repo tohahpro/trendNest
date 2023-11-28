@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet-async";
 
 import { TbListDetails } from "react-icons/tb";
 
-import FeaturedProducts from "../Components/FeaturedProducts";
 import { useEffect, useState } from "react";
 
 const AllProduct = () => {
@@ -50,7 +49,7 @@ const AllProduct = () => {
 
 
     return (
-        <div className="min-h-screen pt-32 mx-56">
+        <div className="min-h-[90vh] pt-32 mx-56">
             <Helmet>
                 <title>TrendNest | Products</title>
 
@@ -63,10 +62,12 @@ const AllProduct = () => {
 
                             <div key={idx}>
                                 <div className="card card-compact bg-base-100 shadow-xl">
-                                    <figure><img src={item.image} alt="Shoes" /></figure>
+                                    <figure><img className="h-44" src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <div className="space-y-3">
-                                            <p className="rounded-md font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{item.category}</p>
+                                            <div>
+                                                <p className="rounded-md font-medium text-white py-1 bg-orange-300 w-4/12 text-center">{item.category}</p>
+                                            </div>
                                             <h2 className="card-title">{item.name}</h2>
                                             <p>Price: {item.price} $</p>
 
@@ -87,11 +88,11 @@ const AllProduct = () => {
                 }
             </div >
 
-            <FeaturedProducts />
 
 
 
-            <p>Current page : {currentPage + 1}</p>
+
+
             <div className="flex justify-center py-20">
 
                 <div className="pagination">

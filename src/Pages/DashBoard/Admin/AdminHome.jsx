@@ -37,7 +37,7 @@ const AdminHome = () => {
 
 
     const data = {
-        labels: ['Users', 'Products', 'Orders'],
+        labels: ['Users', 'Products', 'Reviews'],
         datasets: [
             {
                 label: 'total',

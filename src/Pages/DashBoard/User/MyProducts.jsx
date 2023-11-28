@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
+
 const MyProducts = () => {
 
     const axiosSecure = useAxiosSecure()
     const { user } = useContext(AuthContext)
+
 
     const { refetch, data: menu = [] } = useQuery({
         queryKey: ["menu", user?.email],
@@ -21,6 +23,7 @@ const MyProducts = () => {
             return res.data;
         }
     })
+
 
 
     const handleDelete = (id) => {
@@ -54,8 +57,10 @@ const MyProducts = () => {
 
     return (
         <div>
-            {menu.length}
-
+            <div className="flex justify-center items-center pt-20">
+                <p>Total Products :  {menu.length}
+                </p>
+            </div>
             <div className="lg:py-20 px-4 lg:px-56">
                 <div className="hidden md:flex items-center justify-between my-5 space-y-3 p-4 md:p-0 border md:border-none rounded-lg">
 
@@ -68,7 +73,6 @@ const MyProducts = () => {
                         Name
                     </div>
                     <div className="text-end pr-10 w-32">Status</div>
-                    <div className="text-center w-20">Vote</div>
                     <div className="text-center  w-40">
                         Price
                     </div>
@@ -93,7 +97,6 @@ const MyProducts = () => {
                                     {item.name}
                                 </div>
                                 <div className="text-center pl-8 w-20">{item.status}</div>
-                                <div className="text-center pl-16 w-20">10</div>
                                 <div className="text-center pl-16 w-40">
                                     {item.price} $
                                 </div>

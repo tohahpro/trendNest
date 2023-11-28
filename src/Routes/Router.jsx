@@ -18,6 +18,9 @@ import ProductStatusUpdate from "../Components/ProductStatusUpdate";
 import ProductDetails from "../Components/ProductDetails";
 import AllProduct from "../Pages/AllProduct";
 import ReportMenage from "../Pages/DashBoard/Moderator/ReportMenage";
+import PrivateRoute from "./PrivateRouter";
+import AdminRoute from "./AdminRoute";
+
 
 const router = createBrowserRouter([
     {
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/product-details/:id',
-                element: <ProductDetails />,
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/product-details/${params.id}`)
             }
         ],
@@ -53,21 +56,21 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/add-item',
-                element: <AddItems />
+                element: <PrivateRoute><AddItems /></PrivateRoute>
             },
 
             // admin 
             {
                 path: '/dashboard/admin-home',
-                element: <AdminHome />
+                element: <PrivateRoute><AdminRoute><AdminHome /></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/manage-users',
-                element: <ManageUsers />
+                element: <PrivateRoute><AdminRoute><ManageUsers /></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/user-update/:id',
@@ -83,11 +86,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/user-payment',
-                element: <Payment />
+                element: <PrivateRoute><Payment /></PrivateRoute>
             },
             {
                 path: '/dashboard/my-products',
-                element: <MyProducts />
+                element: <PrivateRoute><MyProducts /></PrivateRoute>
             },
             {
                 path: '/dashboard/product-update/:id',
@@ -98,7 +101,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard/manage-products',
-                element: <ProductMenage />
+                element: <PrivateRoute><ProductMenage /></PrivateRoute>
             },
             {
                 path: '/dashboard/product-status-update/:id',
@@ -107,7 +110,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/manage-report',
-                element: <ReportMenage />
+                element: <PrivateRoute><ReportMenage /></PrivateRoute>
             },
         ]
     }

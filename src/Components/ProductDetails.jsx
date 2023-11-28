@@ -200,10 +200,12 @@ const ProductDetails = () => {
 
             <section className="mt-10">
                 <h2 className="text-center text-2xl font-semibold">Review </h2>
-                <div className="px-16 py-5 flex w-full">
-                    <div>
-                        <img className="w-32 rounded-lg" src={user?.photoURL} alt="" />
-                        <h3 className="py-4 text-base font-medium">{user?.displayName}</h3>
+                <div className="px-16 py-5 flex w-full border-2 border-black rounded-lg mb-20 mt-10">
+                    <div className="flex items-center">
+                        <div>
+                            <img className="w-32 rounded-lg" src={user?.photoURL} alt="" />
+                            <h3 className="py-4 text-base font-medium text-center">{user?.displayName}</h3>
+                        </div>
                     </div>
                     <div className="flex-1 pl-10">
                         <form onSubmit={handleReview}>

@@ -63,7 +63,7 @@ const FeaturedProducts = () => {
 
                             <div key={idx + 1}>
                                 <div className="card card-compact bg-base-100 shadow-xl">
-                                    <figure><img src={item.image} alt="Shoes" /></figure>
+                                    <figure className="h-40"><img className="h-40" src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <div className="">
                                             <p className="rounded-md font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{item.category}</p>

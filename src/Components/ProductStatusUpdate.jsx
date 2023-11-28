@@ -22,7 +22,7 @@ const ProductStatusUpdate = () => {
                 console.log(res.data.modifiedCount);
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
-                        title: `user Role has been delete`,
+                        title: `This Product is Accept`,
                         icon: "success",
                         showConfirmButton: false,
                         timer: 2500
