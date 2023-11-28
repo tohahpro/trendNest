@@ -3,7 +3,7 @@ import FeaturedProducts from "../../Components/FeaturedProducts";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -25,6 +25,12 @@ const Home = () => {
 
     return (
         <div className="pt-20">
+
+            <Helmet>
+                <title>TrendNest | Home</title>
+
+            </Helmet>
+
             <section className="home-banner h-[35vh] lg:h-[60vh] w-full bg-center bg-cover">
                 <div className="flex justify-center items-center h-full">
                     <div className="pb-16 space-y-3">
@@ -71,7 +77,9 @@ const Home = () => {
                 </div >
 
                 <div className="flex justify-center py-10">
-                    <p className=" text-center py-2 w-1/12 rounded-lg font-medium bg-green-400">See More</p>
+                    <Link to={'/products'}>
+                        <p className=" text-center py-2 px-8 rounded-lg font-medium bg-green-400">Show All Products</p>
+                    </Link>
                 </div>
             </section>
 

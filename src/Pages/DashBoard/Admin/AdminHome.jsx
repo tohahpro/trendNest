@@ -2,7 +2,7 @@ import { useContext } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-
+import { Helmet } from "react-helmet-async";
 
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -65,6 +65,10 @@ const AdminHome = () => {
 
     return (
         <div className="flex justify-center mt-20">
+            <Helmet>
+                <title>TrendNest | Admin Home</title>
+
+            </Helmet>
             <div className="w-4/12">
                 <Pie data={data} />
             </div>

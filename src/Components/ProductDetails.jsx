@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { MdHowToVote } from "react-icons/md";
 import { GoReport } from "react-icons/go";
 import { useContext } from "react";
@@ -151,6 +152,12 @@ const ProductDetails = () => {
 
     return (
         <div className="mt-24 mx-96">
+
+            <Helmet>
+                <title>TrendNest | Home</title>
+
+            </Helmet>
+
             <div>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
                     <figure className="flex-1"><img className="w-96" src={productLoad.image} alt="Album" /></figure>

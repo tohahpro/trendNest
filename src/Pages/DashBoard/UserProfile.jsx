@@ -4,7 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-
+import { Helmet } from "react-helmet-async";
 
 const UserProfile = () => {
 
@@ -35,6 +35,10 @@ const UserProfile = () => {
 
     return (
         <div className="min-h-screen flex justify-center items-center">
+            <Helmet>
+                <title>TrendNest | Profile</title>
+
+            </Helmet>
             <div className="p-10 bg-slate-200">
                 <div className="flex justify-center">
                     <div>

@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ReportMenage = () => {
 
@@ -53,6 +54,10 @@ const ReportMenage = () => {
 
     return (
         <div className="flex justify-center">
+            <Helmet>
+                <title>TrendNest | Report Menage</title>
+
+            </Helmet>
             <div className="lg:py-20 px-4 w-3/6">
                 <div className="hidden md:flex items-center justify-between my-5 space-y-3 p-4 md:p-0 border md:border-none rounded-lg">
 

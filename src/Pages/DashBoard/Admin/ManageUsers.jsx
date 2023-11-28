@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import { Link } from "react-router-dom";
 import { BsPencilFill } from 'react-icons/bs';
-// import { MdDelete } from 'react-icons/md';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -34,6 +34,12 @@ const ManageUsers = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>TrendNest | Manage-Users</title>
+
+            </Helmet>
+
             {users.length}
 
             <div className="lg:py-20 px-4 lg:px-56">

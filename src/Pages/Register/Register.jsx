@@ -4,7 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
-
+import { Helmet } from "react-helmet-async";
 
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -110,6 +110,10 @@ const Register = () => {
 
     return (
         <div className="bg-[#F8F8FC]">
+            <Helmet>
+                <title>TrendNest | Register</title>
+
+            </Helmet>
             <div className="lg:mx-56 px-4 py-20">
                 <div className="lg:flex p-0">
                     <div className="flex-1 flex items-center justify-center lg:justify-start">

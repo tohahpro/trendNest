@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { Helmet } from "react-helmet-async";
 
 const ProductMenage = () => {
 
@@ -43,6 +43,10 @@ const ProductMenage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>TrendNest | Products Manage</title>
+
+            </Helmet>
             <div className="lg:py-20 px-4 lg:px-48">
                 <div className="hidden md:flex items-center justify-between my-5 space-y-3 p-4 md:p-0 border md:border-none rounded-lg">
 

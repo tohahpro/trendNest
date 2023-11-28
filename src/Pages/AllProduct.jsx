@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 import { TbListDetails } from "react-icons/tb";
 
@@ -50,7 +51,10 @@ const AllProduct = () => {
 
     return (
         <div className="min-h-screen pt-32 mx-56">
+            <Helmet>
+                <title>TrendNest | Products</title>
 
+            </Helmet>
             <div className="grid grid-cols-4 gap-10">
                 {
                     product.map((item, idx) =>

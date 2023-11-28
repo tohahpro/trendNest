@@ -7,7 +7,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { TagsInput } from "react-tag-input-component";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -69,6 +69,10 @@ const AddItems = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>TrendNest | Add Products</title>
+
+            </Helmet>
             <div className="mt-20 p-5 lg:p-20 bg-[#F3F3F3] mx-2 lg:mx-56">
 
                 <div className="mb-8 flex justify-center">

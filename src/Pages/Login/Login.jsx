@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import { Helmet } from "react-helmet-async";
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "./SocialLogin";
@@ -61,6 +61,10 @@ const Login = () => {
 
     return (
         <div className="bg-[#F8F8FC]">
+            <Helmet>
+                <title>TrendNest | Login</title>
+
+            </Helmet>
             <div className="lg:mx-56 px-4 py-20">
                 <div className="lg:flex p-0">
                     <div className="flex-1 flex items-center justify-center lg:justify-start">
