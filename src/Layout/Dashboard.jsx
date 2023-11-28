@@ -74,6 +74,19 @@ const Dashboard = () => {
                                             </NavLink>
                                         </li>
                                     </div>
+                                    <div className="flex items-center gap-1">
+                                        <MdManageAccounts className="text-2xl" />
+                                        <li>
+                                            <NavLink
+                                                to="/dashboard/manage-coupon"
+                                                className={({ isActive, isPending }) =>
+                                                    isPending ? "pending" : isActive ? "text-[#96AE00]" : ""
+                                                }
+                                            >
+                                                Manage Coupon
+                                            </NavLink>
+                                        </li>
+                                    </div>
 
                                 </>
                                 :

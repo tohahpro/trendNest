@@ -54,6 +54,10 @@ const AllProduct = () => {
                 <title>TrendNest | Products</title>
 
             </Helmet>
+
+
+
+
             <div className="grid grid-cols-4 gap-10">
                 {
                     product.map((item, idx) =>

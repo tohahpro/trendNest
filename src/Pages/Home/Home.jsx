@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import banner from '../../assets/Imge/ecommerce_banner.jpg'
 
 const Home = () => {
 
@@ -24,21 +25,23 @@ const Home = () => {
 
 
     return (
-        <div className="pt-20">
+        <div className="">
 
             <Helmet>
                 <title>TrendNest | Home</title>
 
             </Helmet>
 
-            <section className="home-banner h-[35vh] lg:h-[60vh] w-full bg-center bg-cover">
-                <div className="flex justify-center items-center h-full">
-                    <div className="pb-16 space-y-3">
-                        <h1 className="text-6xl font-semibold text-center">Welcome to <br /><span className="text-[#96AE00]">
-                            Trend</span>Nest</h1>
-                        <p className="w-[350px] text-xl text-center">Your Ultimate Destination for Chic Living, Fashion, and Beyond!</p>
+            <section className="">
+                <div className="min-h-screen" style={{ backgroundImage: `url(${banner})` }}>
+                    {/* <div className="hero-overlay bg-opacity-60"></div> */}
+                    <div className="flex justify-start min-h-screen items-center pl-32">
+                        <div className="w-[500px]">
+                            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <button className="btn btn-primary">Get Started</button>
+                        </div>
                     </div>
-
                 </div>
             </section >
 

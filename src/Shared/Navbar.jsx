@@ -15,7 +15,7 @@ const Navbar2 = () => {
     return (
         <div>
             <nav className=" left-0 right-0 z-[2]           
-                        fixed items-center justify-between lg:top-0 lg:left-0 lg:w-full lg:z-[10]  lg:px-56 shadow-md bg-white py-1">
+                        fixed items-center justify-between lg:top-0 lg:left-0 lg:w-full lg:z-[10]  lg:px-56 shadow-md bg-white/90 py-1">
 
 
                 <div className="flex items-center justify-between">

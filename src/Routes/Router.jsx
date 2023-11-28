@@ -20,6 +20,7 @@ import AllProduct from "../Pages/AllProduct";
 import ReportMenage from "../Pages/DashBoard/Moderator/ReportMenage";
 import PrivateRoute from "./PrivateRouter";
 import AdminRoute from "./AdminRoute";
+import ManageCoupons from "../Pages/DashBoard/Admin/ManageCoupons";
 
 
 const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin-home',
                 element: <PrivateRoute><AdminRoute><AdminHome /></AdminRoute></PrivateRoute>
+            },
+            {
+                path: '/dashboard/manage-coupon',
+                element: <PrivateRoute><AdminRoute><ManageCoupons /></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/manage-users',

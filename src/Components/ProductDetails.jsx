@@ -160,11 +160,13 @@ const ProductDetails = () => {
 
             <div>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
-                    <figure className="flex-1"><img className="w-96" src={productLoad.image} alt="Album" /></figure>
+                    <figure className="flex-1"><img className="w-96 py-5" src={productLoad.image} alt="Album" /></figure>
                     <div className="card-body flex-1">
-                        <h2 className="card-title">{productLoad?.name}</h2>
-                        <p className="rounded-lg font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{productLoad?.category}</p>
-                        <p>{productLoad.recipe}</p>
+                        <div>
+                            <h2 className="card-title">{productLoad?.name}</h2>
+                            <p className="rounded-lg font-medium text-white py-1 bg-orange-300 w-1/5 text-center">{productLoad?.category}</p>
+                            <p>{productLoad.recipe}</p>
+                        </div>
                         <div>
                             <p>Vote: {totalVote}</p>
                             <p>Report: {report?.length}</p>
