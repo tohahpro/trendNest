@@ -4,13 +4,14 @@ import { MdHowToVote } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FeaturedProducts = () => {
 
     const axiosPublic = useAxiosPublic()
     const { user } = useContext(AuthContext)
 
+    const navigate = useNavigate()
 
 
     const { data: products = [] } = useQuery({
@@ -49,6 +50,11 @@ const FeaturedProducts = () => {
     }
 
 
+    const handleClick = () => {
+        navigate('/login')
+    }
+
+
     return (
         <div>
             <div>
@@ -75,11 +81,16 @@ const FeaturedProducts = () => {
 
                                         </div>
                                         <div className="card-actions flex justify-between">
-                                            <button
-                                                onClick={() => handleVote(item)}
-                                                className="px-5 py-2 rounded-lg bg-green-400 flex items-center gap-1"><MdHowToVote />Upvote</button>
+                                            {
+                                                user ? <button
+                                                    onClick={() => handleVote(item)}
+                                                    className="px-5 py-2 rounded-lg bg-green-400 flex items-center gap-1"><MdHowToVote />Upvote</button>
+                                                    :
+                                                    <button
+                                                        onClick={handleClick}
+                                                        className="px-5 py-2 rounded-lg bg-green-400 flex items-center gap-1"><MdHowToVote />Upvote</button>
+                                            }
 
-                                            {/* <button className="px-5 py-2 bg-green-400 rounded-lg flex items-center gap-1"><TbListDetails />Details</button> */}
 
                                         </div>
                                     </div>

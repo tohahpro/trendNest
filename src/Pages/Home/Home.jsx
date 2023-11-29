@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import banner from '../../assets/Imge/ecommerce_banner.jpg'
 import CouponSlide from "../../Components/CouponSlide";
 
+
 const Home = () => {
 
     const axiosPublic = useAxiosPublic()
@@ -19,11 +20,6 @@ const Home = () => {
             return res.data;
         }
     })
-
-
-
-
-
 
     return (
         <div className="">
@@ -53,6 +49,8 @@ const Home = () => {
             </section>
 
             <section className="lg:mx-56 py-20">
+
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10">
                     {
                         products.slice(0, 6).map((item, idx) =>
