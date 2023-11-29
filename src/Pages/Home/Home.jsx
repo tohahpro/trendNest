@@ -47,7 +47,7 @@ const Home = () => {
             </section >
 
 
-            <section>
+            <section className="mt-20">
                 <h2 className="text-center text-4xl font-semibold">MemberShip Discount</h2>
                 <CouponSlide />
             </section>

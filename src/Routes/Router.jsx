@@ -39,12 +39,12 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <AllProduct />,
-                loader: () => fetch('http://localhost:5000/productsCount')
+                loader: () => fetch('https://trendnest-server-side.vercel.app/productsCount')
             },
             {
                 path: '/product-details/:id',
                 element: <PrivateRoute><ProductDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product-details/${params.id}`)
+                loader: ({ params }) => fetch(`https://trendnest-server-side.vercel.app/product-details/${params.id}`)
             }
         ],
 
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/coupon-update/:id',
                 element: <PrivateRoute><AdminRoute><CouponUpdate /></AdminRoute></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/coupon/${params.id}`)
+                loader: ({ params }) => fetch(`https://trendnest-server-side.vercel.app/coupon/${params.id}`)
             },
             {
                 path: '/dashboard/manage-users',
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/user-update/:id',
                 element: <UserUpdate />,
-                loader: ({ params }) => fetch(`http://localhost:5000/user-update/${params.id}`)
+                loader: ({ params }) => fetch(`https://trendnest-server-side.vercel.app/user-update/${params.id}`)
             },
 
             // public 
@@ -107,7 +107,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/product-update/:id',
                 element: <ProductUpdate />,
-                loader: ({ params }) => fetch(`http://localhost:5000/product-update/${params.id}`)
+                loader: ({ params }) => fetch(`https://trendnest-server-side.vercel.app/product-update/${params.id}`)
             },
 
 
@@ -118,7 +118,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/product-status-update/:id',
                 element: <ProductStatusUpdate />,
-                loader: ({ params }) => fetch(`http://localhost:5000/product-status/${params.id}`)
+                loader: ({ params }) => fetch(`https://trendnest-server-side.vercel.app/product-status/${params.id}`)
             },
             {
                 path: '/dashboard/manage-report',

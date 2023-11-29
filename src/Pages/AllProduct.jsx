@@ -40,7 +40,7 @@ const AllProduct = () => {
     const itemPerPages = 20
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products-pagination?page=${currentPage}&size=${itemPerPages}`)
+        fetch(`https://trendnest-server-side.vercel.app/products-pagination?page=${currentPage}&size=${itemPerPages}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [currentPage]);

@@ -93,7 +93,7 @@ const CheckOut = () => {
 
                 }
 
-                const res = await axios.post('http://localhost:5000/payments', payment)
+                const res = await axios.post('https://trendnest-server-side.vercel.app/payments', payment)
                 console.log(res.data)
 
                 if (res.data?.insertedId) {
