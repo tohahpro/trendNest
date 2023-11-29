@@ -151,7 +151,7 @@ const ProductDetails = () => {
 
 
     return (
-        <div className="mt-24 mx-96">
+        <div className="pt-24 lg:mx-96">
 
             <Helmet>
                 <title>TrendNest | Home</title>

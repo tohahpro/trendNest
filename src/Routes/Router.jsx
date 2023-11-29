@@ -21,6 +21,8 @@ import ReportMenage from "../Pages/DashBoard/Moderator/ReportMenage";
 import PrivateRoute from "./PrivateRouter";
 import AdminRoute from "./AdminRoute";
 import ManageCoupons from "../Pages/DashBoard/Admin/ManageCoupons";
+import CouponUpdate from "../Pages/DashBoard/Admin/CouponUpdate";
+
 
 
 const router = createBrowserRouter([
@@ -72,6 +74,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manage-coupon',
                 element: <PrivateRoute><AdminRoute><ManageCoupons /></AdminRoute></PrivateRoute>
+            },
+            {
+                path: '/dashboard/coupon-update/:id',
+                element: <PrivateRoute><AdminRoute><CouponUpdate /></AdminRoute></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/coupon/${params.id}`)
             },
             {
                 path: '/dashboard/manage-users',

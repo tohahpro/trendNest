@@ -5,6 +5,7 @@ import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import banner from '../../assets/Imge/ecommerce_banner.jpg'
+import CouponSlide from "../../Components/CouponSlide";
 
 const Home = () => {
 
@@ -35,19 +36,24 @@ const Home = () => {
             <section className="">
                 <div className="min-h-screen" style={{ backgroundImage: `url(${banner})` }}>
                     {/* <div className="hero-overlay bg-opacity-60"></div> */}
-                    <div className="flex justify-start min-h-screen items-center pl-32">
+                    <div className="flex justify-start min-h-screen items-center px-10 md:p-0 lg:pl-32">
                         <div className="w-[500px]">
-                            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">Get Started</button>
+                            <h1 className="mb-5 text-xl md:text-5xl font-bold text-white"><span className="text-blue-950">Discover Your Unique Product</span> at <span className="text-green-500">TrendNest</span></h1>
+                            <p className="mb-5 md:text-xl text-white">Express your unique style in your home with TrendNest curated collection of home goods.</p>
+
                         </div>
                     </div>
                 </div>
             </section >
 
 
+            <section>
+                <h2 className="text-center text-4xl font-semibold">MemberShip Discount</h2>
+                <CouponSlide />
+            </section>
+
             <section className="lg:mx-56 py-20">
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10">
                     {
                         products.slice(0, 6).map((item, idx) =>
                             item.status === 'accept' ?

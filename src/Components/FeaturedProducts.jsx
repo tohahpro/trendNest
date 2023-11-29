@@ -54,7 +54,7 @@ const FeaturedProducts = () => {
             <div>
                 <h3 className="text-center my-16 text-4xl font-bold">Our Featured Products</h3>
             </div>
-            <div className="grid grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                 {
                     products.map((item, idx) =>
                         item?.role ?
@@ -62,7 +62,7 @@ const FeaturedProducts = () => {
 
                             <div key={idx + 1}>
 
-                                <div className="card card-compact bg-base-100 shadow-xl">
+                                <div className="card card-compact bg-base-100 border">
                                     <figure className="h-40"><img className="h-40" src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <div className="">

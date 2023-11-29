@@ -8,8 +8,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
+
 const ReviewSlider = ({ review }) => {
 
+    console.log(review);
     return (
         <div>
 
@@ -40,9 +44,17 @@ const ReviewSlider = ({ review }) => {
                                                         <div className='flex justify-center'>
                                                             <img className='w-32 rounded-full' src={item?.userPhoto} alt="" />
                                                         </div>
+                                                        <div className="flex justify-center pt-4">
+                                                            <Rating
+                                                                style={{ maxWidth: 120 }}
+                                                                value={item.rating}
+                                                                readOnly
+                                                                className='text-[#96AE4A]'
+                                                            />
+                                                        </div>
                                                         <div className='py-5 px-3 space-y-4'>
-                                                            <h2 className='text-center text-3xl font-medium'>{item.userName}</h2>
-                                                            <p className='text-center text-base font-medium'>{item.review}</p>
+                                                            <h2 className='text-center text-2xl font-medium'>{item.userName}</h2>
+                                                            <p className='text-center text-base font-light'>{item.review}</p>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
@@ -89,9 +101,17 @@ const ReviewSlider = ({ review }) => {
                                                         <div className='flex justify-center'>
                                                             <img src={item?.userPhoto} alt="" />
                                                         </div>
+                                                        <div className="flex justify-center">
+                                                            <Rating
+                                                                style={{ maxWidth: 80 }}
+                                                                value={item.rating}
+                                                                readOnly
+
+                                                            />
+                                                        </div>
                                                         <div className='py-5 px-3 space-y-4'>
-                                                            <h2 className='text-center text-3xl font-medium'>{item.userName}</h2>
-                                                            <p className='text-center text-base font-medium'>{item.review}</p>
+                                                            <h2 className='text-center text-2xl font-medium'>{item.userName}</h2>
+                                                            <p className='text-center text-base font-light'>{item.review}</p>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
