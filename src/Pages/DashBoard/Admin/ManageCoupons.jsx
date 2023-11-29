@@ -38,35 +38,40 @@ const ManageCoupons = () => {
 
     return (
         <div>
-            <h3 className="text-4xl font-bold text-center pt-20"> Discount Coupon</h3>
+            <h3 className="text-4xl font-bold text-center pt-20"> Discount <span className="text-[#96AE4A]">Coupon</span></h3>
 
-            <div className="flex justify-center mt-10">
-                <div className="p-10 border-2  flex justify-center">
-                    <form onSubmit={handleCoupon}>
-                        <div className=" space-y-3">
-                            <div>
-                                <label>Discount</label>
-                                <input type="number" name="discount" className="border border-black w-full" />
-                            </div>
-                            <div>
-                                <label>Coupon</label>
-                                <input type="text" name="coupon" className="border border-black w-full" />
-                            </div>
 
-                            <div>
-                                <label>Start Date</label>
-                                <input type="date" name="start" className="border border-black w-full"></input>
-                            </div>
 
-                            <div>
-                                <label>End Date</label>
-                                <input type="date" name="end" className="border border-black w-full"></input>
-                            </div>
+            <div className="md:mx-10 lg:mx-56 py-20">
+                <form onSubmit={handleCoupon}>
+                    <div className='flex gap-8 '>
+                        <div className='w-1/2'>
+                            <label>Discount</label> <br />
+                            <input className='border w-full p-3 rounded-lg' type="number" name="discount" placeholder="Discount %" />
                         </div>
-                        <input type="submit" value="Submit" />
-                    </form>
-                </div>
+                        <div className='w-1/2'>
+                            <label>Coupon</label> <br />
+                            <input className='border w-full p-3 rounded-lg' type="text" name="coupon" placeholder="coupon" required />
+                        </div>
+                    </div>
+
+
+                    <div className='flex gap-8 '>
+                        <div className='w-1/2'>
+                            <label>Start Date</label> <br />
+                            <input className='border w-full p-3 rounded-lg' type="date" name="start" />
+                        </div>
+                        <div className='w-1/2'>
+                            <label>End Day</label> <br />
+                            <input className='border w-full p-3 rounded-lg' type="date" name='end' />
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Booking" className='text-center w-full bg-[#96AE4A] btn text-white mt-10' />
+                </form>
             </div>
+
+
         </div>
     );
 };
