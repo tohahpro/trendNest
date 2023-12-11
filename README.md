@@ -1,8 +1,12 @@
-# React + Vite
+- Every user on the site has their own dashboard, including moderators and admin panels.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Users can be managed by the admin. able to elevate user to Moderator or Admin
 
-Currently, two official plugins are available:
+- The website itself allows users to pay for membership.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Users can choose to accept or reject the products they add. and can include a product in the highlighted
+
+- All product pages support pagination. Each page has 20 goods.
+
+
+website link - https://trendnestpro.netlify.app/
